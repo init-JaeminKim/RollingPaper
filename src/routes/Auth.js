@@ -1,7 +1,7 @@
 import React from "react";
 import { authService, newFirebase } from "../Instance";
 import "semantic-ui-css/semantic.min.css";
-import { Button, Icon, Header, Image, Grid } from "semantic-ui-react";
+import { Button, Icon, Header, Grid } from "semantic-ui-react";
 import "../css/Auth.css";
 
 const Auth = () => {
@@ -21,16 +21,11 @@ const Auth = () => {
   };
 
   return (
-    <div style={{ paddingTop: "20%"}}>
-      <Grid
-        columns="1"
-        stackable
-        centered
-        verticalAlign="middle"
-      >
+    <div style={{ paddingTop: "20%" }}>
+      <Grid columns="1" stackable centered verticalAlign="middle">
         <Grid.Column computer="4" mobile="4" widescreen="4">
           <Header as="h2" icon textAlign="center" size="huge" color="yellow">
-            <Icon name="graduation cap" />
+            <Icon name="compass" />
             <Header.Content>Start with</Header.Content>
           </Header>
 

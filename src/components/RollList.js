@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { db } from "../Instance";
-import { Card, Image, Button, TextArea, Grid } from "semantic-ui-react";
+import {
+  Card,
+  Image,
+  Button,
+  TextArea,
+  Icon,
+  Modal,
+  Header,
+} from "semantic-ui-react";
 
-const RollList = ({ userObj, rollObj, isOwner }) => {
+const RollList = ({ rollObj, isOwner }) => {
   const [editable, setEditable] = useState(false);
   const [originText, setOriginText] = useState(rollObj.text);
+  const [open, setOpen] = React.useState(false);
 
   const onDeleteClick = async () => {
-    const isOk = window.confirm("Are you sure you want to permanently remove this item?");
-    if (isOk) {
-      await db.collection("rolls").doc(`${rollObj.id}`).delete();
-    }
+    db.collection("rolls").doc(`${rollObj.id}`).delete();
   };
 
   const onChange = (event) => {
@@ -44,7 +50,7 @@ const RollList = ({ userObj, rollObj, isOwner }) => {
                 <Image
                   floated="right"
                   size="mini"
-                  src={`${userObj.photoUrl}`}
+                  src={`${rollObj.photoUrl}`}
                   circular
                 />
                 <Card.Header>{rollObj.displayName}</Card.Header>
@@ -105,7 +111,7 @@ const RollList = ({ userObj, rollObj, isOwner }) => {
                 <Image
                   floated="right"
                   size="mini"
-                  src={`${userObj.photoUrl}`}
+                  src={`${rollObj.photoUrl}`}
                   circular
                 />
                 <Card.Header>{rollObj.displayName}</Card.Header>
@@ -115,9 +121,42 @@ const RollList = ({ userObj, rollObj, isOwner }) => {
               <Card.Content extra>
                 {isOwner && (
                   <div className="ui two buttons">
-                    <Button onClick={onDeleteClick} basic color="red">
-                      Delete
-                    </Button>
+                    <Modal
+                      basic
+                      onClose={() => setOpen(false)}
+                      onOpen={() => setOpen(true)}
+                      open={open}
+                      size="small"
+                      trigger={
+                        <Button basic color="red">
+                          Delete
+                        </Button>
+                      }
+                    >
+                      <Header icon>
+                        <Icon name="trash alternate" />
+                        Delete Messages
+                      </Header>
+                      <Modal.Content>
+                        <p style={{ textAlign: "center", fontSize: 15 }}>
+                          "Are you sure you want to permanently remove this
+                          item?"
+                        </p>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button
+                          basic
+                          color="red"
+                          inverted
+                          onClick={() => setOpen(false)}
+                        >
+                          <Icon name="remove" /> No
+                        </Button>
+                        <Button color="green" inverted onClick={onDeleteClick}>
+                          <Icon name="checkmark" /> Yes
+                        </Button>
+                      </Modal.Actions>
+                    </Modal>
                     <Button onClick={onEditClick} basic color="yellow">
                       Edit
                     </Button>

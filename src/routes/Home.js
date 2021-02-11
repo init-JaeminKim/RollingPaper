@@ -3,13 +3,14 @@ import { db } from "../Instance";
 import {
   Form,
   TextArea,
-  Modal,
   Image,
   Icon,
   Button,
   Popup,
   Message,
+  Grid,
 } from "semantic-ui-react";
+import moment from "moment";
 
 const Home = ({ userObj }) => {
   const [roll, setRoll] = useState("");
@@ -30,9 +31,10 @@ const Home = ({ userObj }) => {
 
     const rollObj = {
       text: roll,
-      createdAt: Date.now(),
+      createdAt: moment().format("MMM Do YY"),
       creator: userObj.uid,
       displayName: userName,
+      photoUrl: userObj.photoUrl,
     };
 
     await db.collection("rolls").add(rollObj);
@@ -56,81 +58,77 @@ const Home = ({ userObj }) => {
   };
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      {onMsg && (
-        <Message
-          style={{ marginTop: 100 }}
-          icon="check circle outline"
-          color="green"
-          header="Thank you!"
-          content="Your message has been posted"
-        />
-      )}
-      <Image
-        src={`${userObj.photoUrl}`}
-        avatar
-        spaced="right"
-        bordered
-        size="mini"
-      ></Image>
-      <span style={{ color: "white", fontSize: 17 }}>
-        {userObj.displayName}
-      </span>
+    <div style={{ paddingTop: "10%" }}>
+      <Grid columns={3} centered>
+        <Grid.Column>
+          {onMsg && (
+            <Message
+              style={{ marginTop: 100 }}
+              icon="check circle outline"
+              color="green"
+              header="Thank you!"
+              content="Your message has been posted"
+            />
+          )}
+          <Image
+            src={`${userObj.photoUrl}`}
+            avatar
+            spaced="right"
+            bordered
+            size="mini"
+          ></Image>
+          <span style={{ color: "white", fontSize: 17 }}>
+            {userObj.displayName}
+          </span>
 
-      <Form style={{ paddingTop: 15 }}>
-        <TextArea
-          style={{
-            height: 350,
-            width: 400,
-            fontSize: 17,
-            backgroundColor: "transparent",
-            borderWidth: 5,
-            resize: "none",
-          }}
-          type="text"
-          value={roll}
-          placeholder="Any word"
-          onChange={onChange}
-          maxLength={280}
-          required
-        />
-      </Form>
+          <Form style={{ paddingTop: 15 }}>
+            <TextArea
+              style={{
+                height: 350,
+                width: 400,
+                fontSize: 17,
+                backgroundColor: "transparent",
+                borderWidth: 5,
+                resize: "none",
+              }}
+              type="text"
+              value={roll}
+              placeholder="Any word"
+              onChange={onChange}
+              maxLength={280}
+              required
+            />
+          </Form>
+          <Grid.Column style={{ paddingTop: 15 }}>
+            <Popup
+              content={secret ? "Show yourself" : "Hide yourself"}
+              trigger={
+                <Button
+                  animated="fade"
+                  toggle
+                  active={secret}
+                  onClick={secretToggle}
+                >
+                  <Button.Content visible>
+                    <Icon name={secret ? "lock" : "lock open"}></Icon>
+                  </Button.Content>
+                  <Button.Content hidden>
+                    <Icon name={secret ? "lock" : "lock open"}></Icon>
+                  </Button.Content>
+                </Button>
+              }
+            ></Popup>
 
-      <div style={{ paddingTop: 15, float: "right" }}>
-        <Popup
-          content={secret ? "Show yourself" : "Hide yourself"}
-          trigger={
             <Button
-              animated="fade"
-              toggle
-              active={secret}
-              onClick={secretToggle}
+              disabled={roll ? false : true}
+              onClick={onCompleteClick}
+              color="green"
             >
-              <Button.Content visible>
-                <Icon name={secret ? "lock" : "lock open"}></Icon>
-              </Button.Content>
-              <Button.Content hidden>
-                <Icon name={secret ? "lock" : "lock open"}></Icon>
-              </Button.Content>
+              Complete
             </Button>
-          }
-        ></Popup>
-
-        <Button
-          disabled={roll ? false : true}
-          onClick={onCompleteClick}
-          color="green"
-        >
-          Complete
-        </Button>
-      </div>
+          </Grid.Column>
+        </Grid.Column>
+      </Grid>
     </div>
   );
 };

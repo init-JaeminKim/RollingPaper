@@ -3,14 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import { Icon, Menu } from "semantic-ui-react";
 import { authService } from "../Instance";
 
-const Navigation = ({ userObj }) => {
+const Navigation = () => {
   const [activeItem, setActiveItem] = useState("Home");
 
   const history = useHistory();
 
   const onLogOutClick = () => {
     authService.signOut();
-    history.push("/");
+    history.push("/RollingPaper");
   };
 
   const onItemClick = (e, { name }) => setActiveItem({ name }.name);
@@ -19,7 +19,7 @@ const Navigation = ({ userObj }) => {
     <Menu size="large" widths="3" color="yellow" fixed="top">
       <Menu.Item
         as={Link}
-        to="/"
+        to="/RollingPaper"
         name="Home"
         active={activeItem === "Home"}
         onClick={onItemClick}

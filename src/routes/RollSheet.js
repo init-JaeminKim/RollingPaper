@@ -27,7 +27,6 @@ const RollSheet = ({ userObj }) => {
       .limit(count);
 
     await firstVisible.get().then((snap) => {
-
       db.collection("rolls")
         .orderBy("createdAt", "desc")
         .limit(count * 2)
@@ -44,35 +43,37 @@ const RollSheet = ({ userObj }) => {
 
   return (
     <>
-      <Container>
-        <Grid columns={4} doubling stackable style={{ paddingTop: 100 }}>
-          {rolls.map((roll) => (
-            <Grid.Column key={roll.id}>
-              <RollList
-                key={roll.id}
-                rollObj={roll}
-                isOwner={userObj.uid === roll.creator}
-                userObj={userObj}
-              />
+      <div style={{ paddingTop: "8%" }}>
+        <Container>
+          <Grid columns={4} doubling stackable>
+            {rolls.map((roll) => (
+              <Grid.Column key={roll.id}>
+                <RollList
+                  key={roll.id}
+                  rollObj={roll}
+                  isOwner={userObj.uid === roll.creator}
+                  userObj={userObj}
+                />
+              </Grid.Column>
+            ))}
+          </Grid>
+          <Grid columns={8} doubling stackable centered>
+            <Grid.Column>
+              <Button
+                onClick={numOfContents}
+                animated="vertical"
+                circular
+                color="blue"
+              >
+                <Button.Content visible>More</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow circle down" />
+                </Button.Content>
+              </Button>
             </Grid.Column>
-          ))}
-        </Grid>
-        <Grid columns={8} doubling stackable centered>
-          <Grid.Column>
-            <Button
-              onClick={numOfContents}
-              animated="vertical"
-              circular
-              color="blue"
-            >
-              <Button.Content visible>More</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow circle down"/>
-              </Button.Content>
-            </Button>
-          </Grid.Column>
-        </Grid>
-      </Container>
+          </Grid>
+        </Container>
+      </div>
     </>
   );
 };
