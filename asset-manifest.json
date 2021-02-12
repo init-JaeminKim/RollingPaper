@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/RollingPaper/static/css/main.3455ad8e.chunk.css",
-    "main.js": "/RollingPaper/static/js/main.583f00e6.chunk.js",
-    "main.js.map": "/RollingPaper/static/js/main.583f00e6.chunk.js.map",
+    "main.js": "/RollingPaper/static/js/main.876731f3.chunk.js",
+    "main.js.map": "/RollingPaper/static/js/main.876731f3.chunk.js.map",
     "runtime-main.js": "/RollingPaper/static/js/runtime-main.88f9a73c.js",
     "runtime-main.js.map": "/RollingPaper/static/js/runtime-main.88f9a73c.js.map",
     "static/css/2.78ef8267.chunk.css": "/RollingPaper/static/css/2.78ef8267.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.78ef8267.chunk.css",
     "static/js/2.69aa3bd8.chunk.js",
     "static/css/main.3455ad8e.chunk.css",
-    "static/js/main.583f00e6.chunk.js"
+    "static/js/main.876731f3.chunk.js"
   ]
 }
