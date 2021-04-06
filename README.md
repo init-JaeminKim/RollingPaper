@@ -56,7 +56,7 @@ npx react-native run-ios
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+![Hex.pm](https://img.shields.io/hexpm/l/apa)
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
