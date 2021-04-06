@@ -5,10 +5,12 @@
 
 ## About The Project
 
-A bulletin board. You can write anything you want and only you can delete or edit it.
+A real-time bulletin board. You can write anything you want and only you can delete or edit it.
+
 ### Built With
 
 - [React Native](https://reactnative.dev)
+- [Firebase](https://firebase.google.com/)
 - [Semantic UI](https://semantic-ui.com/)
 
 <!-- GETTING STARTED -->
@@ -41,13 +43,12 @@ npm install
 3. Run the project
 
 ```sh
-npx react-native start
-npx react-native run-ios
+npm run start
 ```
 
 Or 
 
-[![Service On](https://init-jaeminkim.github.io/RollingPaper/)
+Service On(https://init-jaeminkim.github.io/RollingPaper/)
 
 <!-- LICENSE -->
 
