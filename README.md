@@ -48,7 +48,7 @@ npm run start
 
 Or 
 
-Service On(https://init-jaeminkim.github.io/RollingPaper/)
+Service On https://init-jaeminkim.github.io/RollingPaper/
 
 <!-- LICENSE -->
 
