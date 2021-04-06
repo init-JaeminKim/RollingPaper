@@ -30,7 +30,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```sh
-git clone https://github.com/init-JaeminKim/Planto.git
+git clone https://github.com/init-JaeminKim/RollingPaper.git
 ```
 
 2. Install NPM packages
@@ -38,26 +38,22 @@ git clone https://github.com/init-JaeminKim/Planto.git
 ```sh
 npm install
 ```
-
-3. Install Pod
-
-```sh
-cd ios && pod install && cd ..
-```
-
-4. Run the project
+3. Run the project
 
 ```sh
 npx react-native start
 npx react-native run-ios
 ```
 
+Or 
+
+[![Service On](https://init-jaeminkim.github.io/RollingPaper/)
+
 <!-- LICENSE -->
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 ![Hex.pm](https://img.shields.io/hexpm/l/apa)
-Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
