@@ -9,7 +9,7 @@ const RollSheet = ({ userObj }) => {
 
   useEffect(() => {
     db.collection("rolls")
-      .orderBy("createdAt", "desc")
+      .orderBy("createdAt")
       .limit(count)
       .onSnapshot((snap) => {
         const arrRoll = snap.docs.map((doc) => ({
